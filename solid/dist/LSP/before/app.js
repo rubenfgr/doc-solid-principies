@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const CreateUserComand_1 = require("./CreateUserComand");
+const PrismaUserRepository_1 = require("./PrismaUserRepository");
+const TypeORMUserRepository_1 = require("./TypeORMUserRepository");
+const User_1 = require("./User");
+const user = new User_1.User("John");
+let repository = new TypeORMUserRepository_1.TypeORMUserRepository();
+let command = new CreateUserComand_1.CreateUserComand(repository);
+console.log("=================================================");
+command.execute(user);
+repository = new PrismaUserRepository_1.PrismaUserRepository();
+command = new CreateUserComand_1.CreateUserComand(repository);
+console.log("=================================================");
+command.execute(user);
